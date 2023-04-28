@@ -16,8 +16,8 @@ configurations {
 }
 
 bootJar{
-	archivesBaseName = 'ec2-loginjoindb'
-	archiveFileName = 'ec2-loginjoindb.jar'
+	archivesBaseName = 'ec2-mysohodb'
+	archiveFileName = 'ec2-mysohodb.jar'
 	archiveVersion = "0.1.0"
 }
 

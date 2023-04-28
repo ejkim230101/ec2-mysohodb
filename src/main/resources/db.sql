@@ -15,14 +15,11 @@ CREATE TABLE sns_user(
 );
 INSERT INTO sns_user VALUES (0, 'hong', 'hong@gmail.com', '', 'ROLE_USER', DEFAULT);
 INSERT INTO sns_user VALUES (0, 'tom', 'tom@gmail.com', '', 'ROLE_USER', DEFAULT);
-DESCRIBE sns_user;
 SELECT * FROM sns_user;
 
 -- qna 테이블 준하 --------------------------------------------------------------
 
 DROP TABLE if EXISTS qna;
-DROP TABLE if EXISTS qnacomment;
-
 -- 0306 이준하 테이블 수정 (NOT NULL 부분)
 CREATE TABLE `qna`
 (
@@ -35,16 +32,16 @@ CREATE TABLE `qna`
 	qna_secret  VARCHAR(255) NOT NULL,
 	qna_local_date_time  DATETIME DEFAULT NOW()
 );
-
-
+ALTER TABLE qna CONVERT TO CHARSET UTF8;
 INSERT INTO qna VALUES (null,'jeong','상품문의' , '정희진', '1234' ,'안녕하세요.','공개', DEFAULT);
 INSERT INTO qna VALUES (null,'jeong','상품문의' , '정희진', '1234' ,'안녕하세요.','비공개', DEFAULT);
 INSERT INTO qna VALUES (null,null,'상품문의' , '닉네임', '1234' ,'안녕하세요.','공개', DEFAULT);
 INSERT INTO qna VALUES (null,null,'상품문의' , '닉네임', '1234' ,'안녕하세요.','비공개', DEFAULT);
+SELECT * FROM qna;
 
-ALTER TABLE qna CONVERT TO CHARSET UTF8;
 
-CREATE TABLE qnacomment
+DROP TABLE if EXISTS qnaComment;
+CREATE TABLE qnaComment
 (
 	comment_id       	BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	comment_writer   	VARCHAR(255) NOT NULL,
@@ -53,12 +50,8 @@ CREATE TABLE qnacomment
 	comment_date     	DATETIME DEFAULT NOW()
 );
 ALTER TABLE qnaComment CONVERT TO CHARSET UTF8;
-
 INSERT INTO qnaComment VALUES (NULL,'홍길동','내일배송됩니다','1',DEFAULT);
-
-SELECT * FROM qnacomment;
-SELECT * FROM qna;
-
+SELECT * FROM qnaComment;
 
 -- 회원테이블 경빈 --------------------------------------------------------------
 DROP TABLE if EXISTS member;

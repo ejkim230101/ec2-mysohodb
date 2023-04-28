@@ -15,6 +15,11 @@ configurations {
 
 }
 
+bootJar{
+	archivesBaseName = 'ec2-loginjoindb'
+	archiveFileName = 'ec2-loginjoindb.jar'
+	archiveVersion = "0.1.0"
+}
 
 repositories {
 	mavenCentral()

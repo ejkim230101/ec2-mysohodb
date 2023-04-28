@@ -41,7 +41,6 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.18.22'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation 'org.clojars.smallrivers:simplecaptcha:1.2.1'
-	compileOnly 'com.google.code.findbugs:jsr305'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'

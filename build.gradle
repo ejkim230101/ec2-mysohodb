@@ -15,10 +15,12 @@ configurations {
 
 }
 
-bootJar{
-	archivesBaseName = 'ec2-mysohodb'
-	archiveFileName = 'ec2-mysohodb.jar'
-	archiveVersion = "0.1.0"
+task copyPrivate(type: Copy) {
+	copy {
+		from '.src/main/ec2-mysohodb-p'
+		include "*.yml"
+		into 'src/main/resources'
+	}
 }
 
 repositories {

@@ -15,6 +15,13 @@ configurations {
 
 }
 
+task copyPrivate(type: Copy) {
+	copy {
+		from '.src/main/ec2-mysohodb-p'
+		include "*.yml"
+		into 'src/main/resources'
+	}
+}
 
 repositories {
 	mavenCentral()

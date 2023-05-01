@@ -28,7 +28,7 @@ public class AdminNoticeController {
 
     @GetMapping("/admin/notice")
     public String noticeHome(){
-        return "redirect:/admin/notice/list?page=0"; // localhost8080:/admin/notice/list로 redirect
+        return "redirect:/admin/notice/list?page=0"; //
     }
 
     // 공지글 리스트 페이지

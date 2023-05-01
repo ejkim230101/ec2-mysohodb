@@ -1,3 +1,0 @@
-[submodule "src/main/ec2-mysohodb-p"]
-	path = src/main/resources/ec2-mysohodb-p
-	url = https://github.com/ejkim230101/ec2-mysohodb-p.git

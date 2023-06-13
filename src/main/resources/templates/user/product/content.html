@@ -404,17 +404,12 @@
         var scroll = document.documentElement.scrollTop; //스크롤 내린 길이
         var window = document.documentElement.clientHeight; //화면 길이
         var height = document.querySelector("#buyBtn").clientHeight; //fixed버튼 높이
-        console.log("payBtn:" + payBtn); //고정값
-        console.log("스크롤내린길이"+scroll);
-        console.log("화면길이:"+window);
-        console.log("가변값:" + (scroll - height)); //가변값
-        //65
-        if (payBtn + 146 < scroll - height ) {
+
+        if (payBtn +146*2 < scroll ) {
           fixedBtn.style.opacity = "0";
         } else {
           fixedBtn.style.opacity = "1";
         }
-        // scroll + window - height
       });
 
     </script>

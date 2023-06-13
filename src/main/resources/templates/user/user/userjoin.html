@@ -62,7 +62,7 @@
             <div class="blue check-txt check-txt-id3">사용가능한 형식의 아이디입니다.</div>
 
             <input id="check-txt-pw" class="input-st01 users-login-input mt-10" type="password" name="password" placeholder="비밀번호 (영문,숫자,특수문자 조합 8자리 이상)" value="" />
-            <div class="red check-txt check-txt-pw">올바른 비밀번호 형식이 아닙니다.</div>
+            <div class="red check-txt check-txt-pw">비밀번호를 입력해 주세요.</div>
             <div class="red check-txt check-txt-pw2">올바른 비밀번호 형식이 아닙니다.</div>
             <div class="blue check-txt check-txt-pw3">사용가능한 비밀번호 입니다.</div>
 
@@ -192,16 +192,24 @@
       }
     </script>
     <script>
-      var ckeckId = /^[a-zA-z0-9_-]{5,20}$/;//아이디 유효성 검사
+      var ckeckId = /^[a-zA-z0-9_-]{5,20}$/; //아이디 유효성 검사
       var id = document.querySelector(".input-id");
       id.addEventListener("keyup", function () {
         console.log(id.value);
-        if (ckeckId.test(id.value)) {
+        if (id.value.length == 0) {
+          document.querySelector(".check-txt-id").style.display = "block";
           document.querySelector(".check-txt-id2").style.display = "none";
-          document.querySelector(".check-txt-id3").style.display = "block";
-        } else {
+          document.querySelector(".check-txt-id3").style.display = "none";
+        }
+        if (!ckeckId.test(id.value) && !id.value == "") {
+          document.querySelector(".check-txt-id").style.display = "none";
           document.querySelector(".check-txt-id2").style.display = "block";
           document.querySelector(".check-txt-id3").style.display = "none";
+        }
+        if (ckeckId.test(id.value)) {
+          document.querySelector(".check-txt-id").style.display = "none";
+          document.querySelector(".check-txt-id2").style.display = "none";
+          document.querySelector(".check-txt-id3").style.display = "block";
         }
       });
 
@@ -209,16 +217,24 @@
       var pw = document.querySelector("#check-txt-pw");
       pw.addEventListener("keyup", function () {
         console.log(pw.value);
-        if (ckeckPW.test(pw.value)) {
+        if (pw.value == "") {
+          document.querySelector(".check-txt-pw").style.display = "block";
           document.querySelector(".check-txt-pw2").style.display = "none";
-          document.querySelector(".check-txt-pw3").style.display = "block";
-        } else {
+          document.querySelector(".check-txt-pw3").style.display = "none";
+        }
+        if (!ckeckPW.test(pw.value) && !pw.value == "") {
+          document.querySelector(".check-txt-pw").style.display = "none";
           document.querySelector(".check-txt-pw2").style.display = "block";
           document.querySelector(".check-txt-pw3").style.display = "none";
         }
+        if (ckeckPW.test(pw.value)) {
+          document.querySelector(".check-txt-pw").style.display = "none";
+          document.querySelector(".check-txt-pw2").style.display = "none";
+          document.querySelector(".check-txt-pw3").style.display = "block";
+        }
       });
 
-      var pw = document.getElementById("check-txt-pw"); //비밀번호 체크
+      var pw = document.getElementById("check-txt-pw"); //비밀번호 똑같은지 체크
       var pwcheck = document.getElementById("check-txt-pwcheck");
       pwcheck.addEventListener("keyup", function () {
         console.log(pw.value);
@@ -232,16 +248,45 @@
         }
       });
 
+      var ckeckName = /^[가-힣]{2,5}$/; //이름 유효성 검사
+      var userName = document.querySelector("#userName");
+      console.log(userName.value);
+      userName.addEventListener("keyup", function () {
+        if (userName.value == "") {
+          document.querySelector(".check-txt-name").style.display = "block";
+          document.querySelector(".check-txt-name2").style.display = "none";
+          document.querySelector(".check-txt-name3").style.display = "none";
+        }
+        if (!ckeckName.test(userName.value) && !userName.value == "") {
+          document.querySelector(".check-txt-name").style.display = "none";
+          document.querySelector(".check-txt-name2").style.display = "block";
+          document.querySelector(".check-txt-name3").style.display = "none";
+        }
+        if (ckeckName.test(userName.value)) {
+          document.querySelector(".check-txt-name").style.display = "none";
+          document.querySelector(".check-txt-name2").style.display = "none";
+          document.querySelector(".check-txt-name3").style.display = "block";
+        }
+      });
+
       var ckeckEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+$/; //이메일 유효성 검사
       var email = document.querySelector(".check-email");
       email.addEventListener("keyup", function () {
         console.log(email.value);
-        if (ckeckEmail.test(email.value)) {
+        if (email.value == "") {
+          document.querySelector(".check-txt-email").style.display = "block";
           document.querySelector(".check-txt-email2").style.display = "none";
-          document.querySelector(".check-txt-email3").style.display = "block";
-        } else {
+          document.querySelector(".check-txt-email3").style.display = "none";
+        }
+        if (!ckeckEmail.test(email.value) && !email.value == "") {
+          document.querySelector(".check-txt-email").style.display = "none";
           document.querySelector(".check-txt-email2").style.display = "block";
           document.querySelector(".check-txt-email3").style.display = "none";
+        }
+        if (ckeckEmail.test(email.value)) {
+          document.querySelector(".check-txt-email").style.display = "none";
+          document.querySelector(".check-txt-email2").style.display = "none";
+          document.querySelector(".check-txt-email3").style.display = "block";
         }
       });
 
@@ -249,29 +294,20 @@
       var phone = document.querySelector(".check-phone");
       phone.addEventListener("keyup", function () {
         console.log(phone.value);
-        if (ckeckPhone.test(phone.value)) {
+        if (phone.value == "") {
+          document.querySelector(".check-txt-phone").style.display = "block";
           document.querySelector(".check-txt-phone2").style.display = "none";
-          document.querySelector(".check-txt-phone3").style.display = "block";
-        } else {
+          document.querySelector(".check-txt-phone3").style.display = "none";
+        }
+        if (!ckeckPhone.test(phone.value) && !phone.value == "") {
+          document.querySelector(".check-txt-phone").style.display = "none";
           document.querySelector(".check-txt-phone2").style.display = "block";
           document.querySelector(".check-txt-phone3").style.display = "none";
         }
-      });
-
-      var ckeckName = /^[가-힣]{2,5}$/; //이름 유효성 검사
-      var checkName = /^[가-힣]+$/;
-      var userName = document.querySelector("#userName");
-      console.log(userName.value);
-      userName.addEventListener("keyup", function () {
-        console.log(userName.value);
-        console.log(ckeckName);
-        if (ckeckName.test(userName.value)) {
-          console.log(ckeckName.test(userName.value));
-          document.querySelector(".check-txt-name2").style.display = "none";
-          document.querySelector(".check-txt-name3").style.display = "block";
-        } else {
-          document.querySelector(".check-txt-name2").style.display = "block";
-          document.querySelector(".check-txt-name3").style.display = "none";
+        if (ckeckPhone.test(phone.value)) {
+          document.querySelector(".check-txt-phone").style.display = "none";
+          document.querySelector(".check-txt-phone2").style.display = "none";
+          document.querySelector(".check-txt-phone3").style.display = "block";
         }
       });
     </script>

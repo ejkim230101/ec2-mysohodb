@@ -42,17 +42,17 @@ public class AdminInquiryController {
                        @RequestParam(value = "page", defaultValue = "0") int page) throws ParseException {
 
         Page<InquiryResponseDto> list;
-        if(keyword == null && findBy == null && dateStart == null && dateEnd == null
+        if(keyword == null && findBy == null && dateStart == null && dateEnd == null//없어도 됨
                 || (dateStart.equals("null")) && (dateEnd.equals("null")) && (keyword.equals("null"))
                 || (dateStart.equals("")) && (dateEnd.equals("")) && (keyword.equals(""))){
-            list = inquiryService.getPage(page);
+            list = inquiryService.getPage(page);//처음 아무것도 입력하지 않았을때
         }else {
-            if(!dateStart.equals("") && dateEnd.equals("")){
+            if(!dateStart.equals("") && dateEnd.equals("")){//오늘,어제,한주,한달 버튼 클릭했을때
                 list = inquiryService.findByDate(dateStart, page);
             } else if ((!dateStart.equals("")) && (!dateEnd.equals(""))) {
-                list = inquiryService.findByDate(dateStart, dateEnd, page);
+                list = inquiryService.findByDate(dateStart, dateEnd, page);//날짜로 입력했을때
             } else {
-                list = inquiryService.findByKeyword(findBy, keyword, page);
+                list = inquiryService.findByKeyword(findBy, keyword, page);//단어 검색할때
             }
         }
         int totalPage = list.getTotalPages();

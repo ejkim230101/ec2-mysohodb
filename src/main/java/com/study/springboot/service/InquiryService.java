@@ -34,7 +34,7 @@ public class InquiryService {
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
         Page<InquiryEntity> list = inquiryRepository.findAll(pageable);
         return list.map(InquiryResponseDto::new);
-    }
+    }//inquirNo를 기준으로 역정렬 한것을 10개씩 나눠서 리턴해줌.
     @Transactional(readOnly = true)
     public Page<InquiryResponseDto> findByDate(String start, String end, int page) throws ParseException {
         //기간 검색

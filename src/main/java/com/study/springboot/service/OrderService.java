@@ -127,10 +127,10 @@ public class OrderService {
 
     @Transactional(readOnly = true)
     public String[] dateSetting(String start, String end)throws ParseException {
-        //문자열을 날짜형식으로 변환
+
         DateFormat sdFormatStart = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat sdFormatEnd = new SimpleDateFormat("yyyy-MM-dd");
-        Date tempDateStart = sdFormatStart.parse(start);
+        Date tempDateStart = sdFormatStart.parse(start);//문자열을 날짜형식으로 변환
         Date tempDateEnd = sdFormatEnd.parse(end);
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
@@ -138,7 +138,7 @@ public class OrderService {
         cal2.setTime(tempDateEnd);
         DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
-        cal2.add(Calendar.DATE, +1);
+        cal2.add(Calendar.DATE, +1);//마지막날 전날까지 검색해주므로 +1 더해줌.
 
         //날짜형식을 문자열로 변환
         String dateStartStr = df1.format(cal1.getTime())+" 00:00:00";
